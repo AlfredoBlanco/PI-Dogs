@@ -1,0 +1,14 @@
+.detail{
+    margin: 1rem 0rem;
+    width: 30rem;
+    height: fit-content;
+    background-color: rgba(237, 224, 212, 0.8);
+    border: 2px solid black;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.detailphoto{
+    max-width: 25rem;
+    max-height: 20rem;
+}

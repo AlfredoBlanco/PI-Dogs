@@ -1,0 +1,27 @@
+.land{
+    background-image: url(https://www.gannett-cdn.com/media/2021/05/14/USATODAY/usatsports/imageforentry66-xrt.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    
+    justify-content: flex-start;
+    position: fixed;
+
+}
+.start{
+    margin: 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 30px;
+    border: 2px solid #000000;
+    border-radius: 1rem;
+}
+
+.start:hover{
+    background-color: rgba(0, 0, 0, 1);
+    border: 2px solid #40916c;
+    color: #40916c;
+}
+
+

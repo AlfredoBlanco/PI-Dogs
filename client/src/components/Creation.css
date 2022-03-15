@@ -1,0 +1,36 @@
+.container{
+  margin-top: 2rem;
+  width: 30rem;
+  height: fit-content;
+  background-color: darkgray;
+  border: 2px solid black;
+  border-radius: 1rem;
+
+}
+
+
+.error{
+  color: red;
+}
+
+.all{
+  display: flex;
+  justify-content:left;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-image: url(https://media.istockphoto.com/photos/labrador-retriever-on-black-background-picture-id157565707?k=20&m=157565707&s=612x612&w=0&h=BsByeSX_0BPL8zqCGBxy3V0s-hKrmiJxHMg7jG2PcfE=);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  background-position: center;
+  background-color: black;
+}
+
+.submit{
+  margin: 0.5rem;
+}
+.link{
+  margin-top: 1rem;
+}
+

@@ -1,0 +1,13 @@
+export const GET_ALL = 'GET_ALL';
+export const GET_ONE = 'GET_ONE';
+export const CHARGE_TEMPS = 'CHARGE_TEMPS';
+export const TODOS = 'todos';
+export const EXISTENTES = 'existentes';
+export const CREADOS = 'creados';
+export const A_Z = 'az';
+export const Z_A = 'za';
+export const ASC = 'ascendente';
+export const DESC = 'descendente';
+export const CREAR = 'crear';
+export const LIMPIAR = 'limpiar';
+export const FILTROS = 'filtros';

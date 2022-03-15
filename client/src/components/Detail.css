@@ -1,0 +1,22 @@
+.detailInfo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.content{
+    
+    background-image: url(https://i2.wp.com/cms.babbel.news/wp-content/uploads/2020/09/CM_MagazineHeader_FallVsAutumn.png?resize=1200,630);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    
+}
+#out{
+    color: none;
+}

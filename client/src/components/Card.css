@@ -1,0 +1,29 @@
+.Card{
+    
+    width: 17rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 black;
+    transition: 0.5s;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    background-color: rgba(240, 234, 210, 0.5);
+    
+}
+.Card:hover {
+    background-color: rgba(240, 234, 210, 1);
+}
+
+.info{
+    margin: 1rem;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+#image{
+    max-width: 17rem;
+    max-height: 10rem;
+    border-radius: 1rem;
+}

@@ -1,0 +1,12 @@
+.page{
+    border-radius: 3rem;
+    background-color: #ddb892;
+    transition-duration: 0.5s;
+    margin-left: 0.25rem;
+}
+
+
+.page:hover{
+    width: 2rem;
+    background-color: rgba(240, 234, 210, 0.5);
+}
