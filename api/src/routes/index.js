@@ -148,6 +148,7 @@ app.post('/dog', async (req, res) => {
         let doggie = await dog.find( e => e.name.toLowerCase() === name.toLowerCase());
         
         if ( doggie ) return res.send({msg : 'La raza ya existe'});
+        name = name[0].toUpperCase() + name.slice(1);
         
         let moods = await getMood();
         let [obj, check] = await Dog.findOrCreate({

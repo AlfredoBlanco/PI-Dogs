@@ -149,7 +149,6 @@ export default function Creation(){
             <h2>Formulario de creacion de raza</h2>
             <form onSubmit={ e =>{
                 e.preventDefault();
-                console.log(e);
                 handleSubmit()
             }}>
                 
