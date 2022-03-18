@@ -30,7 +30,8 @@ export default function Detail(props){
                 Object.keys(dogo).length && perro?
                 <div className="detailInfo">
 
-                    <CardDetail 
+                    <CardDetail
+                        id= {id}
                         img={dogo.url}
                         name = {dogo.name}
                         temp = {dogo.temperament}
@@ -39,7 +40,7 @@ export default function Detail(props){
                         years = {dogo.life_span} 
                         />
                     <Link to='/home'>
-                        <button id="out">Listo!</button>
+                        <button className="options" id="out">Listo!</button>
                     </Link>
                 </div>
                 :

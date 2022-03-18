@@ -16,26 +16,36 @@ var MoodDB = [];
 // Ejemplo: router.use('/auth', authRouter);
 
 const getDog = async () => {
-    let api = [];
-    if( !DogApi.length){
-        api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`).then(r => r.data);
-        DogApi = api;
-    } else {
-        api = DogApi;
+    try{
+
+        let api = [];
+        if( !DogApi.length){
+            api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${APIKEY}`).then(r => r.data);
+            DogApi = api;
+        } else {
+            api = DogApi;
+        }
+        let BBDD = await Dog.findAll({ include: { model: Mood, attributes: ['name'], thorugh: {attributes: []}}});
+        return [...api, ...BBDD];
+    } catch (e){
+        console.error(e);
     }
-    let BBDD = await Dog.findAll({ include: { model: Mood, attributes: ['name'], thorugh: {attributes: []}}});
-    return [...api, ...BBDD];
     
 } 
 const getMood = async () => {
-    let moods = [];
-    if( !MoodDB.length ){
-        moods = await Mood.findAll();
-        MoodDB = moods
-    } else {
-        moods = MoodDB;
+    try{
+
+        let moods = [];
+        if( !MoodDB.length ){
+            moods = await Mood.findAll();
+            MoodDB = moods
+        } else {
+            moods = MoodDB;
+        }
+        return moods;
+    } catch(e){
+        console.error(e);
     }
-    return moods;
 }
 
 app.get('/dogs',async (req, res) => {
@@ -149,13 +159,13 @@ app.post('/dog', async (req, res) => {
         
         if ( doggie ) return res.send({msg : 'La raza ya existe'});
         name = name[0].toUpperCase() + name.slice(1);
-        
+
         let moods = await getMood();
         let [obj, check] = await Dog.findOrCreate({
             where: { name},
             defaults: { id : id++, name, height, weight, years, image}
         });
-        
+
         let temps = await temperament.map( ele => moods.find( e => e.dataValues.name === ele ));
         
         temps = temps.map(e => e.dataValues.id);
@@ -163,6 +173,39 @@ app.post('/dog', async (req, res) => {
         await obj.setMoods(temps);
         return check? res.status(200).send({msg: 'Raza creada con éxito'}) 
         : res.send({msg : 'La raza ya existe'});
+    } catch(e){
+        console.error(e);
+    }
+})
+
+app.put('/:idRaza', async (req, res) => {
+    try{
+        
+        let{name, weight, height, image, years, temperament} = req.body;
+        let{idRaza} = req.params;
+        await Dog.update({name, weight, height, image, years},
+            {where:{id : idRaza}});
+        let [obj] = await Dog.findAll({where : {id: idRaza}})
+        
+        let moods = await getMood();
+        let temps = await temperament.map( ele => moods.find( e => e.dataValues.name === ele ));
+    
+        temps = temps.map(e => e.dataValues.id);
+
+        await obj.setMoods(temps);
+        return res.send({msg: 'Raza actualizada'});
+
+    }catch(e){
+        console.error(e);
+    }
+})
+
+app.delete('/:idRaza', async (req, res) =>{
+    try{
+
+        const {idRaza} = req.params;
+        await Dog.destroy({where: {id: idRaza}});
+        res.status(200).send({msg: 'Raza eliminada'})
     } catch(e){
         console.error(e);
     }

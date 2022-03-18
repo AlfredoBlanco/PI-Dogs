@@ -4,6 +4,7 @@ import Creation from './components/Creation';
 import Detail from './components/Detail';
 import Home from './components/Home';
 import Land from './components/Land';
+import Edit from './components/Edit';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route exact path= '/home' component={ Home } />
       <Route exact path= '/create' component={ Creation } />
       <Route exact path= '/:id' component={ Detail } />
+      <Route exact path= '/edit/:id' component = {Edit} />
 
 
       

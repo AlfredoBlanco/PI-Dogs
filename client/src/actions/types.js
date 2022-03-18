@@ -1,4 +1,4 @@
-export const GET_ALL = 'GET_ALL';
+export const GET_ALL = 'get_all';
 export const GET_ONE = 'GET_ONE';
 export const CHARGE_TEMPS = 'CHARGE_TEMPS';
 export const TODOS = 'todos';
@@ -10,4 +10,8 @@ export const ASC = 'ascendente';
 export const DESC = 'descendente';
 export const CREAR = 'crear';
 export const LIMPIAR = 'limpiar';
+export const LIMPIAREDIT = 'limpiaredit';
 export const FILTROS = 'filtros';
+export const EDITAR = 'editar';
+export const ELIMINAR = 'eliminar';
+export const LIMPIARELIMINAR = 'limpiareliminar';

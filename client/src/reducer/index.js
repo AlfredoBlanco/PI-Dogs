@@ -1,13 +1,16 @@
 import { GET_ALL, GET_ONE, 
         CHARGE_TEMPS,
-        CREAR, LIMPIAR, FILTROS } from "../actions/types";
+        CREAR, LIMPIAR, FILTROS, EDITAR, 
+        LIMPIAREDIT, ELIMINAR, LIMPIARELIMINAR } from "../actions/types";
 
 
 let initial = {
     dogs: [],
     dog: {},
     temperament: [],
-    created: {}
+    created: {},
+    updated: {},
+    deleted: {}
 }
 
 export default function reducer(state = initial,{type, payload}) {
@@ -28,22 +31,41 @@ export default function reducer(state = initial,{type, payload}) {
                 ...state,
                 temperament: payload
             };
-        
         case CREAR:
             return {
                 ...state,
                 created: payload
             };
+        case EDITAR:
+            return{
+                ...state,
+                updated: payload
+            };
+        case ELIMINAR:
+            return {
+                ...state,
+                deleted: payload
+            };
         case LIMPIAR:
             return {
                 ...state,
                 created: {}
-            }
+            };        
+        case LIMPIAREDIT:
+            return {
+                ...state,
+                updated: {}
+            };
+        case LIMPIARELIMINAR:
+            return {
+                ...state,
+                deleted: {}
+            };    
         case FILTROS: 
             return {
                 ...state,
                 dogs: payload
-            }
+            };
         default:
             return state;
 

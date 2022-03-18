@@ -12,3 +12,39 @@
     max-width: 25rem;
     max-height: 20rem;
 }
+
+.options{
+    background-color: rgba(237, 224, 212, 0.8);
+    font-size: medium;
+    width: 5rem;
+    border: 1.5px solid #000000;
+}
+
+.options:hover{
+    background-color: rgba(237, 224, 212, 1);
+    border: 2px solid #000000;
+
+}
+
+.first{
+    margin-top: 1rem;
+}
+
+.infoDetail{
+    margin-bottom: 0.5rem;
+}
+
+.titles{
+    margin: 0.5rem 0;
+}
+
+#yes{
+    border-bottom-left-radius: 1rem ;
+    border-top-left-radius: 1rem ;
+}
+
+#no{
+    border-bottom-right-radius: 1rem ;
+    border-top-right-radius: 1rem ;
+}
+

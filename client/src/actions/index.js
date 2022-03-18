@@ -4,7 +4,11 @@ import {GET_ALL, GET_ONE,
         A_Z, Z_A, ASC, CREAR,
         LIMPIAR, DESC,
         FILTROS,
-        TODOS
+        TODOS,
+        EDITAR,
+        LIMPIAREDIT,
+        ELIMINAR,
+        LIMPIARELIMINAR,
     } from './types';
 import axios from 'axios';
 
@@ -63,6 +67,7 @@ export function clear (){
         type: LIMPIAR,
     }
 }
+
 
 export function modify(filtrado, temperament, orden, dogs){
     let payload = dogs;
@@ -144,4 +149,36 @@ export function modify(filtrado, temperament, orden, dogs){
         type: FILTROS,
         payload
     };
+}
+
+export  function edit(id, body){
+
+    
+    return async (dispatch) => {
+        let res = await axios.put(`http://localhost:3001/${id}`,{...body}).then(r => r.data);
+        return dispatch({
+            type: EDITAR,
+            payload: res
+        })
+    }
+}
+export function clearEdit (){
+    return {
+        type: LIMPIAREDIT,
+    }
+}
+
+export function deleteBreed(id){
+    return async (dispatch) => {
+        let res = await axios.delete(`http://localhost:3001/${id}`).then(r => r.data);
+        return dispatch({
+            type: ELIMINAR,
+            payload: res
+        })
+    }
+}
+export function clearDelete(){
+    return {
+        type: LIMPIARELIMINAR,
+    }
 }
