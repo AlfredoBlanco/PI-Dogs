@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { clearEdit, edit } from "../actions";
@@ -47,6 +47,7 @@ export default function Edit(props){
     const editado = useSelector(state => state.updated);
     const dispatch = useDispatch();
     const history = useHistory();
+    const temp = useRef();
     let [weight_min, weight_max] = dogo.weight.split(' - ');
     let [height_min, height_max] = dogo.height.split(' - ');
     let [life_min, lifemax] = dogo.life_span.split(' - ');
@@ -122,6 +123,7 @@ export default function Edit(props){
     
         })
         setErr({ disabled: true});
+        temp.current.value = 'nada';
     }
     function handleBack(){
         history.goBack();
@@ -215,7 +217,7 @@ export default function Edit(props){
                 </div>
                 <div className="input">
                 <label><b>Temperamentos: </b></label><br/>
-                <select name='temperamentos' onChange={(e) => handleChange(e.target)}>
+                <select name='temperamentos' onChange={(e) => handleChange(e.target)} ref={temp}>
                     <option name='temperamentos' value='nada'>Temperamentos</option>
                     {
                         temps?.map( e => {

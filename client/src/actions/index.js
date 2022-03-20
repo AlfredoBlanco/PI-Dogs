@@ -17,9 +17,9 @@ export function getAll(name){
     return async (dispatch) =>{
         let dogs = [];
         if(name) {
-            dogs = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+            dogs = await axios.get(`/dogs?name=${name}`);
         } else {
-            dogs = await axios.get('http://localhost:3001/dogs');
+            dogs = await axios.get('/dogs');
         }
         return dispatch({
             type: GET_ALL,
@@ -30,7 +30,7 @@ export function getAll(name){
 export function getOne(id){
 
     return async (dispatch) =>{
-        const dog = await axios.get(`http://localhost:3001/dogs/${id}`).then(r => r.data);
+        const dog = await axios.get(`/dogs/${id}`).then(r => r.data);
         
         return dispatch({
             type: GET_ONE,
@@ -41,7 +41,7 @@ export function getOne(id){
 
 export function chargeTemps(){
     return async (dispatch) => {
-        const temps = await axios.get('http://localhost:3001/temperament').then(r => r.data);
+        const temps = await axios.get('/temperament').then(r => r.data);
         return dispatch({
             type: CHARGE_TEMPS,
             payload: temps
@@ -52,7 +52,7 @@ export function chargeTemps(){
 export  function create(body){
     
     return async (dispatch) => {
-        const res = await axios.post('http://localhost:3001/dog',{
+        const res = await axios.post('/dog',{
             ...body
         })
         return dispatch({
@@ -155,7 +155,7 @@ export  function edit(id, body){
 
     
     return async (dispatch) => {
-        let res = await axios.put(`http://localhost:3001/${id}`,{...body}).then(r => r.data);
+        let res = await axios.put(`/${id}`,{...body}).then(r => r.data);
         return dispatch({
             type: EDITAR,
             payload: res
@@ -170,7 +170,7 @@ export function clearEdit (){
 
 export function deleteBreed(id){
     return async (dispatch) => {
-        let res = await axios.delete(`http://localhost:3001/${id}`).then(r => r.data);
+        let res = await axios.delete(`/${id}`).then(r => r.data);
         return dispatch({
             type: ELIMINAR,
             payload: res

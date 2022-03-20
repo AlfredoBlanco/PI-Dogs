@@ -94,7 +94,7 @@ app.get('/dogs/:idRaza', async (req, res) => {
         let dogs = await getDog();
         let dog = dogs.find( e => Number(e.id) === Number(idRaza) ); 
         
-        if(idRaza < 264){
+        if(idRaza < 265){
 
             const url = dog.image.url;
             const perro = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${dog.name}&api_key=${APIKEY}`).then(r => r.data);

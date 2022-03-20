@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector} from 'react-redux';
 import { Link } from "react-router-dom";
 import { create, clear } from "../actions";
@@ -43,6 +43,7 @@ export default function Creation(){
     const temps = useSelector( state => state.temperament);
     const creado = useSelector( state => state.created);
     const dispatch = useDispatch();
+    const temp = useRef();
     const [send, setSend] = useState('');
 
     const [info, setInfo] = useState({
@@ -115,6 +116,7 @@ export default function Creation(){
     
         })
         setErr({ disabled: true});
+        temp.current.value = 'nada';
     }
 
     function handleDelete(e){
@@ -212,7 +214,7 @@ export default function Creation(){
                 </div>
                 <div className="input">
                 <label><b>Temperamentos: </b></label><br/>
-                <select name='temperamentos' onChange={(e) => handleChange(e.target)}>
+                <select name='temperamentos' onChange={(e) => handleChange(e.target)} ref={temp}>
                     <option name='temperamentos' value='nada'>Temperamentos</option>
                     {
                         temps?.map( e => {
