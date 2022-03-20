@@ -26,7 +26,7 @@ export default function CardDetail({id,img, name, temp, height, weight, years}){
     }
 
     useEffect(() => {
-        console.log(eliminado);
+        
         if (eliminado.msg) {
             alert(eliminado.msg);
             history.push('/home');
@@ -35,7 +35,7 @@ export default function CardDetail({id,img, name, temp, height, weight, years}){
         return () => {
             dispatch(clearDelete());
         }
-    }, [eliminado])
+    }, [eliminado, history, dispatch])
     return (
         <div className="detail" >
             

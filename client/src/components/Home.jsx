@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch} from 'react-redux';
 import { getAll, chargeTemps, modify } from "../actions";
@@ -19,6 +19,11 @@ export default function Home(){
     const [temp, setTemp] = useState('todos');
     const [order, setOrder] = useState('az');
     const [search , setSearch] = useState('');
+    const [off , setOff] = useState(null);
+    const [check , setCheck] = useState(false);
+    const filters = useRef();
+    const filtertemps = useRef();
+    const orders = useRef();
     const [page, setPage] = useState(1);
     const cantPerros = 8;  
     const ultimo = page * cantPerros;
@@ -44,10 +49,28 @@ export default function Home(){
       setSearch(e);
       setPage(1);
     }
+    function handleReset(){
+      filters.current.value = TODOS;
+      filtertemps.current.value = TODOS;
+      orders.current.value = A_Z;
+      setFiltrados(TODOS);
+      setTemp(TODOS);
+      setOrder(A_Z);
+    }
+    function handleClick(){
+      setCheck(true);
+    }
 
     useEffect(() => {
       dispatch(getAll(search));
-    }, [search, dispatch]);
+      handleReset();
+      if(search !== '' && check){
+        setOff(true);
+      } else{
+        setOff(false)
+      }
+      
+    }, [check, search, dispatch]);
 
     useEffect(()=>{
       dispatch(getAll()).then(e => {setDogos(e.payload)});
@@ -79,14 +102,18 @@ export default function Home(){
             <span id='name'>Alfredo M. Blanco</span>
           </div>
           <div className="optionContainer">
-
+            <button onClick={() => handleReset()} className='select'
+              disabled={off? true : false}>
+                Reset</button>
             <div className="filters">
-              <select onChange={e => handleFilter(e)} className='select'>
+              <select onChange={e => handleFilter(e)} className='select' ref={filters}
+                disabled={off? true : false}>
                 <option value= {TODOS}>Filtrar por...</option>
                 <option value={EXISTENTES}>Existentes</option>
                 <option value={CREADOS}>Creados</option>
               </select> 
-              <select onChange={e => handleTemp(e)} className='select'>
+              <select onChange={e => handleTemp(e)} className='select' ref={filtertemps}
+                disabled={off? true : false}>
                 <option value={TODOS} >Temperamento</option>
 
                 {
@@ -95,7 +122,8 @@ export default function Home(){
                   })
                 }
               </select>
-              <select onChange={e => handleOrder(e)} className='select'>
+              <select onChange={e => handleOrder(e)} className='select' ref={orders}
+                disabled={off? true : false}>
                 <option value={A_Z}>A - Z</option>
                 <option value={Z_A}>Z - A</option>
                 <option value={ASC}>Peso ascendente</option>
@@ -105,6 +133,7 @@ export default function Home(){
             <div>
               <input type="text" placeholder="Introduzca una raza..." 
               onChange={e => handleSearch(e.target.value)} value={search}
+              onClick={() => handleClick()}
               className='select' id="search"/>
               <button onClick={() => handleSearch('')} 
                 className='select' id="reset">reset</button>

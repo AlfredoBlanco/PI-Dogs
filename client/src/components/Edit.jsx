@@ -50,7 +50,7 @@ export default function Edit(props){
     let [weight_min, weight_max] = dogo.weight.split(' - ');
     let [height_min, height_max] = dogo.height.split(' - ');
     let [life_min, lifemax] = dogo.life_span.split(' - ');
-    let [life_max, ...rest] = lifemax.split(' ');
+    let [life_max,] = lifemax.split(' ');
     let tempers = dogo.temperament.split(', ');
     const [info, setInfo] = useState({name: dogo.name, weight_min, 
         weight_max, height_min, height_max,
@@ -132,14 +132,14 @@ export default function Edit(props){
         return () => {
             dispatch(clearEdit())
         }
-    }, [send, dispatch])
+    }, [send, id, dispatch])
     useEffect(() =>{
         if(editado.msg) {
             alert(editado.msg);
             history.push(`/${id}`);
         }
 
-    },[editado])
+    },[editado, history, id])
     
     return (
         <div className="all">
