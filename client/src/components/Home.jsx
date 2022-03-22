@@ -90,7 +90,7 @@ export default function Home(){
 
                 <AiFillGithub />
               </a>
-              <a href="https://www.linkedin.com/in/alfredo-martin-blanco-6644aa221/" className="redirect">
+              <a href="https://www.linkedin.com/in/ablanco-fullstack/" className="redirect">
 
                 <AiFillLinkedin />
               </a>
