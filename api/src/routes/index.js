@@ -8,7 +8,6 @@ const {APIKEY} = process.env;
 
 
 const app = Router();
-var id = 265;
 var DogApi = [];
 var MoodDB = [];
 
@@ -92,7 +91,7 @@ app.get('/dogs/:idRaza', async (req, res) => {
 
         const {idRaza} = req.params;
         let dogs = await getDog();
-        let dog = dogs.find( e => Number(e.id) === Number(idRaza) ); 
+        let dog = dogs.find( e => String(e.id) === String(idRaza) ); 
         
         if(idRaza < 265){
 
@@ -163,16 +162,17 @@ app.post('/dog', async (req, res) => {
         let moods = await getMood();
         let [obj, check] = await Dog.findOrCreate({
             where: { name},
-            defaults: { id : id++, name, height, weight, years, image}
+            defaults: {name, height, weight, years, image}
         });
 
         let temps = await temperament.map( ele => moods.find( e => e.dataValues.name === ele ));
         
         temps = temps.map(e => e.dataValues.id);
 
-        await obj.setMoods(temps);
+         await obj.setMoods(temps);
         return check? res.status(200).send({msg: 'Raza creada con éxito'}) 
         : res.send({msg : 'La raza ya existe'});
+        
     } catch(e){
         console.error(e);
     }

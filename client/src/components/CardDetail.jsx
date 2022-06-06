@@ -41,7 +41,7 @@ export default function CardDetail({id,img, name, temp, height, weight, years}){
             
                 
             {
-                id>264 
+                String(id).length > 4 
                 ?
                  bye?
                  <>

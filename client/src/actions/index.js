@@ -75,7 +75,7 @@ export function modify(filtrado, temperament, orden, dogs){
         if(filtrado === EXISTENTES){
             payload = payload?.filter( e => e.id < 265);
         } else if( filtrado === CREADOS) {
-            payload = payload?.filter( e => e.id >= 265);
+            payload = payload?.filter( e => String(e.id).length > 4);
         }
     }
 

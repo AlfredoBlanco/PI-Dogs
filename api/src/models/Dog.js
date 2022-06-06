@@ -9,11 +9,11 @@ module.exports = (sequelize) => {
   return Dog.init(
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: UUIDV4,
         unique: true,
-        allowNull: true,
+        allowNull: false,
       },
       name:{
         type: DataTypes.STRING,
