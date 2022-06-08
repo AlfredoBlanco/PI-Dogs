@@ -47,6 +47,9 @@ const getMood = async () => {
     }
 }
 
+app.get('/', (req, res) => {
+    return res.json({data : 'Bienvenidos a la api'})
+})
 app.get('/dogs',async (req, res) => {
     try{
 
