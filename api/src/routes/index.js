@@ -116,7 +116,7 @@ app.get('/dogs/:idRaza', async (req, res) => {
         console.error(e);
     }
 
-    })
+})
         
         
 app.get('/temperament', async (req, res) => {
@@ -210,5 +210,7 @@ app.delete('/:idRaza', async (req, res) =>{
         console.error(e);
     }
 })
+
+//Good
 
 module.exports = app;
