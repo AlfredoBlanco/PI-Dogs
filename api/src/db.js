@@ -7,7 +7,7 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 } = process.env;
 
-let sequelize =
+/* let sequelize =
   process.env.NODE_ENV === 'production'
     ? new Sequelize({
       database: DB_NAME,
@@ -34,13 +34,13 @@ let sequelize =
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   
-  });
+  }); */
 
-/* const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`, {
+const sequelize = new Sequelize(process.env.DB_URL, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 
-}); */
+});
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
