@@ -36,11 +36,13 @@ const {
   
   }); */
 
-const sequelize = new Sequelize(process.env.DB_URL, {
+/* const sequelize = new Sequelize(process.env.DB_URL, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 
-});
+}); */
+const sequelize = new Sequelize(process.env.DATABASE_URL);
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];

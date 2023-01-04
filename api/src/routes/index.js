@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const axios = require('axios');
 const cors = require('cors');
-/* const { Dog, Mood } = require('../db');
-const {APIKEY} = process.env; */
+const { Dog, Mood } = require('../db');
+const {APIKEY} = process.env; 
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     next();
 });
 
-/* const getDog = async () => {
+const getDog = async () => {
     try{
 
         let api = [];
@@ -39,8 +39,8 @@ app.use((req, res, next) => {
         console.error(e);
     }
     
-}  */
-/* const getMood = async () => {
+} 
+const getMood = async () => {
     try{
 
         let moods = [];
@@ -54,11 +54,11 @@ app.use((req, res, next) => {
     } catch(e){
         console.error(e);
     }
-} */
+}
 
 app.get('/', (req, res) => {
     return res.json({data : 'Bienvenidos a la api'})
-})/* 
+}) 
 app.get('/dogs',async (req, res) => {
     try{
 
@@ -222,7 +222,7 @@ app.delete('/:idRaza', async (req, res) =>{
         console.error(e);
     }
 })
- */
+
 //Good
 
 module.exports = app;
