@@ -36,9 +36,6 @@ const {
   
   }); */
 
-  try{
-
-  
 const sequelize = new Sequelize(process.env.DB_URL, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -71,9 +68,7 @@ const { Dog, Mood } = sequelize.models;
 // Product.hasMany(Reviews);
 Dog.belongsToMany(Mood, {through: 'Dog_Mood'});
 Mood.belongsToMany(Dog, {through: 'Dog_Mood'});
-  } catch(e) {
-    console.log(e)
-  }
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js'); 
  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
